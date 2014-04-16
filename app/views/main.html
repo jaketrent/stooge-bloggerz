@@ -1,0 +1,22 @@
+<div ng-controller="BlogCtrl">
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li ng-class="{ 'active': isActiveAuthor() }">
+        <a ng-click="setActiveAuthor()">All</a>
+      </li>
+      <li ng-repeat="author in authors" ng-class="{ 'active': isActiveAuthor(author) }">
+        <a ng-click="setActiveAuthor(author)">{{ author.name }}</a>
+      </li>
+    </ul>
+    <h3 class="text-muted">stooge bloggerz</h3>
+  </div>
+
+  <div class="blog">
+    <h1>Latest Posts</h1>
+    <ul>
+      <li ng-repeat="post in blogPosts|filter:activeAuthor.name">
+        {{ post.title }} {{ post.body }} - {{ post.author }}
+      </li>
+    </ul>
+  </div>
+</div>
